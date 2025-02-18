@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    options {
+        timeout(time: 1, unit: 'SECONDS')
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Install') {
+            steps {
+                run 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                run 'npm test'
+            }
+        }
+    }
+}
