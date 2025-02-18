@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    options {
-        timeout(time: 1, unit: 'SECONDS')
-    }
     stages {
         stage('Checkout') {
             steps {
@@ -11,12 +8,12 @@ pipeline {
         }
         stage('Install') {
             steps {
-                sh 'npm install'
+                 bat 'cd Jenkins-CI & npm install'
             }
         }
         stage('Test') {
             steps {
-                sh 'npm test'
+                bat 'cd Jenkins-CI &  npm test'
             }
         }
     }
