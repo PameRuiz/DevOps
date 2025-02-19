@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "lint": "eslint ."
   },
   "dependencies": {
     "express": "*"
   },
   "devDependencies": {
+    "@eslint/js": "^9.20.0",
     "chai": "^4.0.2",
     "chai-http": "^3.0.0",
+    "eslint": "^9.20.1",
     "mocha": "^3.4.2"
   }
 }

@@ -11,10 +11,25 @@ pipeline {
                  bat 'cd Jenkins-CI & npm install'
             }
         }
-        stage('Test') {
+        stage('Checks') {
+            retry(2)
             steps {
-                bat 'cd Jenkins-CI &  npm test'
+                parallel(
+                    test: {bat 'cd Jenkins-CI &  npm test'},
+                    lint: {bat 'cd Jenkins-CI & npm run lint'}
+                )
+                
             }
         }
+
+    }
+    post {
+        always {
+            slackSend( 
+                message: "Build ${env.BUILD_NUMBER} ${currentBuild.result}",
+                color: currentBuild.result == 'SUCCESS' ? 'good' : 'danger' 
+            )
+        }
+
     }
 }
