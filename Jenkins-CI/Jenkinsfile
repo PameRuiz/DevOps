@@ -12,8 +12,8 @@ pipeline {
             }
         }
         stage('Checks') {
-            retry(2)
             steps {
+                retry(2)
                 parallel(
                     test: {bat 'cd Jenkins-CI &  npm test'},
                     lint: {bat 'cd Jenkins-CI & npm run lint'}
