@@ -18,7 +18,9 @@ pipeline {
                         retry(2) 
                         bat 'cd Jenkins-CI &  npm test'
                     },
-                    lint: {bat 'cd Jenkins-CI & npm run lint'}
+                    lint: {
+                        bat 'cd Jenkins-CI & npm run lint'
+                    }
                 )
                 
             }
