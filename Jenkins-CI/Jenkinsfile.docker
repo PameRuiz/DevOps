@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Install') {
+            steps {
+                 bat 'cd Jenkins-CI & docker build . -t myapp:latest'
+            }
+        }
+    }
+}
